@@ -1,13 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-export const commentsSlice = createSlice({
+const commentsSlice = createSlice({
     name: 'comments',
-    initialState: {},
-    reducers: {
+    initialState: {
+        comments: {
 
+        }
     },
-    extraReducers: {
-        //load comments with async thunk
+    reducers: {
+        loadComments: (state, action) => {
+            state.comments = action.payload;
+        }
     }
 })
+
+export const selectComments = state => state.comments.comments;
+
+export const { loadComments } = commentsSlice.actions;
+export default commentsSlice.reducer;
