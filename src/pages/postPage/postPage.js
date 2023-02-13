@@ -13,8 +13,6 @@ export const PostPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(subredditName);
-    console.log(postId);
     dispatch(loadCurrentPost({ subredditName, postId }));
   }, [subredditName, postId, dispatch]);
 

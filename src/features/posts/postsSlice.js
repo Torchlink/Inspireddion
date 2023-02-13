@@ -4,10 +4,8 @@ import { loadComments } from "../comments/commentsSlice";
 export const loadPopular = createAsyncThunk("posts/loadPopular", async () => {
   try {
     const response = await fetch("https://www.reddit.com/r/popular.json");
-    console.log(response);
     if (response.ok) {
       const json = await response.json();
-      console.log(json);
       return json;
     }
   } catch (err) {
@@ -57,7 +55,6 @@ export const loadCurrentPost = createAsyncThunk(
       );
       if (response.ok) {
         const json = await response.json();
-        console.log(json)
         thunkAPI.dispatch(loadComments(json[1]))
         return json;
       }

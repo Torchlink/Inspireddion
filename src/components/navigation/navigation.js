@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectAllOptions, toggleSidebar } from "../../features/options/optionsSlice";
 import { SearchBar } from "../search/search"
+import Logo from "../../assets/inspireddion_logo.webp"
 
 
 
@@ -11,8 +12,8 @@ export const Navigation = () => {
 
   return (
     <nav className="topNav">
-      <Link to={"/"}>
-        <img src="" className="navLogo" />
+      <Link to={"/"} className="navLogo" >
+        <img src={Logo} />
       </Link>
 
       <SearchBar />

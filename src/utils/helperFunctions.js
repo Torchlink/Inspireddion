@@ -12,7 +12,8 @@ export const checkMediaType = (post) => {
     !post.data.is_gallery &&
     !post.data.is_video &&
     post.data.thumbnail !== "" &&
-    !post.data.is_self
+    !post.data.is_self &&
+    post.data.preview
   ) {
     mediaType = "img";
   } else if (post.data.is_gallery) {
