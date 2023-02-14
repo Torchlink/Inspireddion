@@ -157,7 +157,7 @@ a {
   height: 100%;
   object-fit: cover;
   border-radius: 0 0 10px 10px;
-  filter: drop-shadow(2px 2px 6px rgb(66, 66, 66));
+  filter: drop-shadow(4px 4px 5px rgb(66, 66, 66));
   min-width: 200px;
 }
 
@@ -237,6 +237,37 @@ a {
   color: rgb(235, 64, 98);
 }
 
+.loadingBackground {
+  background-color: gray;
+  animation-name: loadingBackground;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes loadingBackground {
+  from{background-color: rgb(100, 100, 100);}
+  to{background-color: rgb(211, 211, 211);}
+}
+
+.placeholderTitle {
+  height: 50px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.placeholderImg {
+  opacity: 0.7;
+  animation-name: loadingImg;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes loadingImg {
+  from{opacity: 0.7;}
+  to{opacity: 0.4;}
+}
 
 .toggleSidebarButton {
   width: 50px;

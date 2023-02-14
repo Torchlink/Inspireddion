@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { Posts } from "../../components/posts/posts";
 import {
   loadPosts,
-  loadSubreddit,
   selectPosts,
 } from "../../features/posts/postsSlice";
 import { setCurrentSubreddit } from "../../features/subreddits/subredditsSlice";
@@ -15,7 +14,7 @@ export const SubredditPage = () => {
   const { subredditName } = useParams();
 
   useEffect(() => {
-    dispatch(loadSubreddit(subredditName));
+    dispatch(loadPosts(`r/${subredditName}/.json`));
     dispatch(setCurrentSubreddit(subredditName))
   }, [subredditName, dispatch]);
 

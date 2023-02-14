@@ -1,35 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { loadComments } from "../comments/commentsSlice";
 
-export const loadPopular = createAsyncThunk("posts/loadPopular", async () => {
-  try {
-    const response = await fetch("https://www.reddit.com/r/popular.json");
-    if (response.ok) {
-      const json = await response.json();
-      return json;
-    }
-  } catch (err) {
-    console.log(err);
-  }
-});
-
-export const loadSubreddit = createAsyncThunk(
-  "posts/loadSubreddit",
-  async (subredditName) => {
-    try {
-      const response = await fetch(
-        `https://www.reddit.com/r/${subredditName}/.json?`
-      );
-      if (response.ok) {
-        const json = await response.json();
-        return json;
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
-);
-
 export const loadPosts = createAsyncThunk(
   "posts/loadSubreddit",
   async (extension) => {
@@ -85,30 +56,16 @@ const postsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(loadPopular.pending, (state, action) => {
+      .addCase(loadPosts.pending, (state, action) => {
         state.isLoadingPosts = true;
         state.failedLoadingPosts = false;
       })
-      .addCase(loadPopular.fulfilled, (state, action) => {
+      .addCase(loadPosts.fulfilled, (state, action) => {
         state.isLoadingPosts = false;
         state.failedLoadingPosts = false;
         state.posts = action.payload.data;
       })
-      .addCase(loadPopular.rejected, (state, action) => {
-        state.isLoadingPosts = false;
-        state.failedLoadingPosts = true;
-      })
-
-      .addCase(loadSubreddit.pending, (state, action) => {
-        state.isLoadingPosts = true;
-        state.failedLoadingPosts = false;
-      })
-      .addCase(loadSubreddit.fulfilled, (state, action) => {
-        state.isLoadingPosts = false;
-        state.failedLoadingPosts = false;
-        state.posts = action.payload.data;
-      })
-      .addCase(loadSubreddit.rejected, (state, action) => {
+      .addCase(loadPosts.rejected, (state, action) => {
         state.isLoadingPosts = false;
         state.failedLoadingPosts = true;
       })

@@ -13,12 +13,20 @@ export const Post = ({ post, mediaContent }) => {
       <div className="postInfoContainer">
         <span className="postTitle">{post.data.title}</span>
         <span className="postComments">Comments: {post.data.num_comments}</span>
-        <span className="postComments">posted by /u/{post.data.author}</span>
+        <span className="postAuthor">posted by /u/{post.data.author}</span>
       </div>
-      {mediaContent.type === "gallery" && <GalleryDisplay mediaContent={mediaContent} />}
-      {mediaContent.type === "video" && <VideoDisplay mediaContent={mediaContent} />}
-      {mediaContent.type === "img" && <ImgDisplay mediaContent={mediaContent} />}
-      {mediaContent.type === "text" && <TextDisplay mediaContent={mediaContent} />}
+      {mediaContent.type === "gallery" && (
+        <GalleryDisplay mediaContent={mediaContent} />
+      )}
+      {mediaContent.type === "video" && (
+        <VideoDisplay mediaContent={mediaContent} />
+      )}
+      {mediaContent.type === "img" && (
+        <ImgDisplay mediaContent={mediaContent} />
+      )}
+      {mediaContent.type === "text" && (
+        <TextDisplay mediaContent={mediaContent} />
+      )}
     </Link>
   );
 };

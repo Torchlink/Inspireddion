@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { CommentList } from "../../components/commentList/commentList";
 import { selectComments } from "../../features/comments/commentsSlice";
 import {
   loadCurrentPost,
@@ -10,7 +11,6 @@ import {
 export const PostPage = () => {
   const dispatch = useDispatch();
   const { subredditName, postId } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(loadCurrentPost({ subredditName, postId }));
@@ -23,21 +23,18 @@ export const PostPage = () => {
     <div>
       {post.data.children && (
         <div className="postPageContainer">
-          <button onClick={() => navigate(-1)}>Back to {subredditName}</button>
-          <Link to={`/r/${subredditName}`}>{`/r/${subredditName}`}</Link>
+          <Link to={`/r/${subredditName}`}>{`Back to /r/${subredditName}`}</Link>
           <h1>{post.data.children[0].data.title}</h1>
           <div className="singlePostImgContainer">
-            <img src={post.data.children[0].data.url} alt="Post"/>
+            <img src={post.data.children[0].data.url} alt="Post" />
           </div>
           <div className="commentsContainer">
-            <ul>
-              {comments.data.children.map((comment) => {
-                return <li key={comment.data.id}>{comment.data.body}</li>;
-              })}
-            </ul>
+            {comments && <CommentList comments={comments} />}
           </div>
         </div>
       )}
     </div>
   );
 };
+
+//  const navigate = useNavigate();          <button onClick={() => navigate(-1)}>Back to {subredditName}</button>
