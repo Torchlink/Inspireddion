@@ -27,7 +27,7 @@ export const PostPage = () => {
           <Link to={`/r/${subredditName}`}>{`/r/${subredditName}`}</Link>
           <h1>{post.data.children[0].data.title}</h1>
           <div className="singlePostImgContainer">
-            <img src={post.data.children[0].data.url} />
+            <img src={post.data.children[0].data.url} alt="Post"/>
           </div>
           <div className="commentsContainer">
             <ul>

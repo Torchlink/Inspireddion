@@ -25,6 +25,7 @@ const subredditsSlice = createSlice({
   initialState: {
     subreddits: [{name: "Art"}],
     filteredSubreddits: null,
+    currentSubreddit: null,
     isLoadingSubreddits: false,
     failedLoadingSubreddits: false,
   },
@@ -32,6 +33,9 @@ const subredditsSlice = createSlice({
     filterSubreddits: (state, action) => {
         state.filteredSubreddits = state.subreddits.filter((subreddit => subreddit.name.toLowerCase().includes(action.payload.toLowerCase())))
     },
+    setCurrentSubreddit: (state, action) => {
+      state.currentSubreddit = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -52,7 +56,8 @@ const subredditsSlice = createSlice({
 });
 
 export const selectSubreddits = (state) => state.subreddits.subreddits;
+export const selectCurrentSubreddit = (state) => state.subreddits.currentSubreddit;
 export const selectFilteredSubreddits = (state) => state.subreddits.filteredSubreddits;
-export const { filterSubreddits } = subredditsSlice.actions;
+export const { filterSubreddits, setCurrentSubreddit } = subredditsSlice.actions;
 
 export default subredditsSlice.reducer;

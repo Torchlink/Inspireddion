@@ -16,6 +16,7 @@ import ErrorPage from "./pages/errorPage/errorPage";
 import { SubredditPage } from "./pages/subredditPage/subredditPage";
 import { AboutPage } from "./pages/about/about";
 import { PostPage } from "./pages/postPage/postPage";
+import { SearchPage } from "./pages/searchPage/searchPage";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -24,11 +25,13 @@ const router = createBrowserRouter(
     <Route element={<App />} path="/" errorElement={<ErrorPage />}>
       <Route index element={<HomePage />} />
       <Route path="about" element={<AboutPage />} />
+      <Route path="/search" element={<SearchPage />} />
       <Route path="r/:subredditName" element={<SubredditPage />} />
       <Route path="r/:subredditName/comments/:postId" element={<PostPage />} />
     </Route>
   )
 );
+console.log(router)
 
 root.render(
   <React.StrictMode>

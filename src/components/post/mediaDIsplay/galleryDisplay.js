@@ -1,8 +1,8 @@
-export const GalleryDisplay = ({ post }) => {
+export const GalleryDisplay = ({ mediaContent }) => {
     return (
       <div>
-        {post.data.url && !post.data.gallery_data && (
-          <div className="postImgContainer">
+        {mediaContent.gallery_data && (
+          <div className="postGalleryContainer">
 
           </div>
         )}

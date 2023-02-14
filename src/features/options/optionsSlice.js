@@ -4,10 +4,14 @@ const optionsSlice = createSlice({
   name: "options",
   initialState: {
     sidebarOpen: false,
+    subredditSearch: false,
   },
   reducers: {
     toggleSidebar: (state) => {
       state.sidebarOpen = state.sidebarOpen ? false : true;
+    },
+    toggleSearchMode: (state) => {
+      state.subredditSearch = state.subredditSearch ? false : true;
     },
   },
 });
@@ -15,4 +19,4 @@ const optionsSlice = createSlice({
 export const selectAllOptions = (state) => state.options;
 
 export default optionsSlice.reducer;
-export const { toggleSidebar } = optionsSlice.actions;
+export const { toggleSidebar, toggleSearchMode } = optionsSlice.actions;

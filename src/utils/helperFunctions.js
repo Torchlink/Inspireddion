@@ -31,7 +31,6 @@ export const getMediaContent = (post) => {
   const mediaContent = { type: mediaType };
   switch (mediaType) {
     case "img":
-      console.log(post);
       const resolutions = post.data.preview.images[0].resolutions;
       mediaContent["src"] = cleanUrl(
         resolutions[resolutions.length -1].url
@@ -41,11 +40,12 @@ export const getMediaContent = (post) => {
       mediaContent["width"] = resolutions[resolutions.length -1].width;
       return mediaContent;
     case "gallery":
-      mediaContent["gallery_info"] = post.data.media_metadata.map((id) => {
+      mediaContent["gallery_info"] = Object.entries(post.data.media_metadata).map((id) => {
+        const resolutions = id[1].p;
         return {
-          src: cleanUrl(id.p[0].u),
-          width: id.p[0].x,
-          height: id.p[0].y,
+          src: cleanUrl(resolutions[resolutions.length - 1].u),
+          width: resolutions[resolutions.length - 1].x,
+          height: resolutions[resolutions.length - 1].y,
         };
       });
       return mediaContent;

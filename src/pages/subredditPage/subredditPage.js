@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Posts } from "../../components/posts/posts";
 import {
   loadPosts,
   loadSubreddit,
   selectPosts,
 } from "../../features/posts/postsSlice";
+import { setCurrentSubreddit } from "../../features/subreddits/subredditsSlice";
+import {motion} from "framer-motion";
 
 export const SubredditPage = () => {
   const dispatch = useDispatch();
@@ -14,12 +16,13 @@ export const SubredditPage = () => {
 
   useEffect(() => {
     dispatch(loadSubreddit(subredditName));
+    dispatch(setCurrentSubreddit(subredditName))
   }, [subredditName, dispatch]);
 
   const posts = useSelector(selectPosts);
 
   return (
-    <div className="subredditPageContainer">
+    <motion.div initial={{opacity:0}} animate={{opacity: 1}} transition={{duration: 0.75}} className="subredditPageContainer">
       <Posts posts={posts} />
       <div>
         {posts.before && (
@@ -51,6 +54,6 @@ export const SubredditPage = () => {
           </button>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };

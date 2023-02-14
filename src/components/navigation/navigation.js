@@ -13,7 +13,7 @@ export const Navigation = () => {
   return (
     <nav className="topNav">
       <Link to={"/"} className="navLogo" >
-        <img src={Logo} />
+        <img src={Logo} alt="Inspireddion logo" />
       </Link>
 
       <SearchBar />
