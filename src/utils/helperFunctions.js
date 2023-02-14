@@ -55,6 +55,9 @@ export const getMediaContent = (post) => {
       mediaContent["src"] = post.data.secure_media.reddit_video.fallback_url;
       return mediaContent;
     case "text":
+      if(post.data.selftext) {
+        mediaContent["selftext"] = post.data.selftext;
+      }
       return mediaContent;
     default:
       console.log("mediaType not recognized");

@@ -6,15 +6,16 @@ import { VideoDisplay } from "./mediaDIsplay/videoDisplay";
 
 export const Post = ({ post, mediaContent }) => {
   return (
-    <Link
-      to={`/r/${post.data.subreddit}/comments/${post.data.id}`}
-      className="post"
-    >
-      <div className="postInfoContainer">
-        <span className="postTitle">{post.data.title}</span>
-        <span className="postComments">Comments: {post.data.num_comments}</span>
-        <span className="postAuthor">posted by /u/{post.data.author}</span>
-      </div>
+    <div className="post">
+      <Link to={`/r/${post.data.subreddit}/comments/${post.data.id}`}>
+        <div className="postInfoContainer">
+          <span className="postTitle">{post.data.title}</span>
+          <span className="postComments">
+            Comments: {post.data.num_comments}
+          </span>
+          <span className="postAuthor">posted by /u/{post.data.author}</span>
+        </div>
+      </Link>
       {mediaContent.type === "gallery" && (
         <GalleryDisplay mediaContent={mediaContent} />
       )}
@@ -27,6 +28,6 @@ export const Post = ({ post, mediaContent }) => {
       {mediaContent.type === "text" && (
         <TextDisplay mediaContent={mediaContent} />
       )}
-    </Link>
+    </div>
   );
 };
