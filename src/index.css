@@ -1,5 +1,7 @@
 :root {
   --navBarColor: rgb(85, 66, 64);
+  --accentColor: rgb(230, 87, 77);
+  --accentColorLight: rgb(248, 121, 112);
 }
 
 *,
@@ -34,7 +36,7 @@ a {
 .navLogo {
   display: block;
   height: 100%;
-  background-color: rgb(233, 76, 65);
+  background-color: var(--accentColor);
   padding: 2px 20px 2px 20px;
   border-right: 35px solid rgb(165, 53, 45);
 }
@@ -86,11 +88,15 @@ a {
   background-color: hsl(0, 0%, 10%);
   z-index: 10;
   overflow: scroll;
-  border-top: 6px solid rgb(233, 76, 65);
+  border-top: 6px solid var(--accentColor);
 }
 
 .sidebar.open {
   transform: translateX(0px);
+}
+
+.postPageContainer {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .pageContainer {
@@ -138,11 +144,11 @@ a {
   overflow: hidden;
   max-height: 600px;
   border-radius: 0 0 20px 20px;
-  transition: max-height 0.35s ease-in-out;
+  transition: max-height 0.45s ease-in-out;
 }
 
 .postsContainer .post .postImgContainer:hover {
-  max-height: 1200px;
+  max-height: 1600px;
 }
 
 .postsContainer .post .postVideoContainer video {
@@ -152,26 +158,109 @@ a {
   display: block;
 }
 
-.postsContainer .post img {
+.postGalleryContainer {
+  position: relative;
+  overflow: hidden;
+}
+
+.postGalleryContainer img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 0 0 10px 10px;
-  filter: drop-shadow(4px 4px 5px rgb(66, 66, 66));
-  min-width: 200px;
+  border-radius: 0 0 20px 20px;
+  transition: all 150ms ease-in-out;
+}
+
+.slideButton.next {
+  display: inline-block;
+  width: 4em;
+  height: 4em;
+  border: 0.5em solid #d3d3d3;
+  border-radius: 50%;
+  margin-left: 1.5em;
+  position: absolute;
+  transform: translate(0, -50%);
+  top: 50%;
+  right: 10px;
+  background: #68686857;
+  transition: 100ms all ease-in-out;
+  cursor: pointer;
+}
+
+.slideButton.next:after {
+  content: "";
+  display: inline-block;
+  margin-top: 0.3rem;
+  margin-left: -0.3rem;
+  width: 1.4em;
+  height: 1.4em;
+  border-top: 0.5em solid #d3d3d3;
+  border-right: 0.5em solid #d3d3d3;
+  transform: rotate(45deg);
+  transition: 100ms all ease-in-out;
+}
+
+.slideButton.prev {
+  display: inline-block;
+  width: 4em;
+  height: 4em;
+  border: 0.5em solid #d3d3d3;
+  border-radius: 50%;
+  margin-right: 1.5em;
+  position: absolute;
+  transform: translate(0, -50%);
+  top: 50%;
+  left: 10px;
+  background: #68686857;
+  transition: 100ms all ease-in-out;
+  cursor: pointer;
+}
+
+.slideButton.prev:after {
+  content: "";
+  display: inline-block;
+  margin-top: 0.3rem;
+  margin-left: 0.3rem;
+  width: 1.4em;
+  height: 1.4em;
+  border-top: 0.5em solid #d3d3d3;
+  border-right: 0.5em solid #d3d3d3;
+  -moz-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+  transition: 100ms all ease-in-out;
+}
+
+.slideButton.next:hover,
+.slideButton.prev:hover {
+  border: 0.5em solid var(--accentColor);
+  filter: drop-shadow(1px 1px 2px var(--accentColor));
+}
+
+.slideButton.next:hover::after,
+.slideButton.prev:hover::after {
+  border-top: 0.5em solid var(--accentColor);
+  border-right: 0.5em solid var(--accentColor);
+  filter: drop-shadow(1px 1px 2px var(--accentColor));
+}
+
+.postImgContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .pageNavButton {
   border: none;
   position: fixed;
-  top: 50%;
   height: 50px;
   width: 50px;
-  outline: 4px solid black;
+  border: 4px solid rgb(107, 107, 107);
+  color: rgb(107, 107, 107);
   border-radius: 50%;
-  font-size: 30px;
+  font-size: 35px;
   font-weight: 900;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.76);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -179,12 +268,20 @@ a {
   cursor: pointer;
 }
 
+.pageNavButton:hover {
+  border: 4px solid var(--accentColor);
+  color: var(--accentColor);
+  filter: drop-shadow(0px 0px 3px var(--accentColor));
+}
+
 .pageNavButton.next {
-  right: 3%;
+  top: 6rem;
+  right: 10%;
 }
 
 .pageNavButton.prev {
-  left: 3%;
+  top: 10rem;
+  right: 10%;
 }
 
 .singlePostImgContainer img {
@@ -200,7 +297,7 @@ a {
   padding: 10px;
 }
 
-.commentsContainer ul li {
+.commentsContainer ul > li {
   padding: 15px 0 15px 0;
   border-bottom: 1px solid;
 }
@@ -234,12 +331,12 @@ a {
 }
 
 .subredditList li a:hover {
-  color: rgb(235, 64, 98);
+  color: var(--accentColorLight);
 }
 
 .postTextContainer {
   padding: 2px 10px 10px 15px;
-} 
+}
 
 .postTextContainer.selftext {
   background-color: white;
@@ -257,6 +354,10 @@ a {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.selftextDisplay * {
+  word-break: break-word;
+}
+
 .loadingBackground {
   background-color: gray;
   animation-name: loadingBackground;
@@ -266,8 +367,12 @@ a {
 }
 
 @keyframes loadingBackground {
-  from{background-color: rgb(100, 100, 100);}
-  to{background-color: rgb(211, 211, 211);}
+  from {
+    background-color: rgb(100, 100, 100);
+  }
+  to {
+    background-color: rgb(211, 211, 211);
+  }
 }
 
 .placeholderTitle {
@@ -285,8 +390,38 @@ a {
 }
 
 @keyframes loadingImg {
-  from{opacity: 0.7;}
-  to{opacity: 0.4;}
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 0.4;
+  }
+}
+
+.buttonLink {
+  color: rgb(0, 0, 0);
+  background: var(--accentColor);
+  padding: 8px 15px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  box-shadow: 2px 4px 0px rgb(80, 80, 80);
+  position: relative;
+  transition: all 100ms ease-in-out;
+  top: 0;
+  left: 0;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  display: inline-block;
+}
+
+.buttonLink:active {
+  box-shadow: none;
+  top: 4px;
+  left: 2px;
+}
+
+.buttonLink:hover {
+  background: var(--accentColorLight);
 }
 
 .toggleSidebarButton {
@@ -363,4 +498,10 @@ a {
   top: 18px;
   width: 0%;
   left: 50%;
+}
+
+@media only screen and (max-width: 850px) {
+  .pageContainer {
+    width: 95%;
+  }
 }

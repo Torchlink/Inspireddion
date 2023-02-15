@@ -1,16 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Posts } from "../../components/posts/posts";
-import { loadPosts, selectPosts } from "../../features/posts/postsSlice";
+import { resetBeforeArray, selectPosts } from "../../features/posts/postsSlice";
+import { loadPosts } from "../../features/posts/postSliceThunks";
 import { setCurrentSubreddit } from "../../features/subreddits/subredditsSlice";
 import { motion } from "framer-motion";
+import { PageNavigation } from "../../components/pageNavigation/pageNavigation";
 
 export const HomePage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadPosts("r/popular/.json?geo_filter=GLOBAL"));
+    dispatch(loadPosts({extension:"r/popular/.json?geo_filter=GLOBAL"}));
     dispatch(setCurrentSubreddit(null));
+    dispatch(resetBeforeArray)
   }, [dispatch]);
 
   const posts = useSelector(selectPosts);
@@ -18,6 +21,7 @@ export const HomePage = () => {
   return (
     <motion.div initial={{opacity:0}} animate={{opacity: 1}} transition={{duration: 0.75}} className="homePageContainer">
       <Posts posts={posts} />
+      <PageNavigation posts={posts} subredditName={"popular"} />
     </motion.div>
   );
 };

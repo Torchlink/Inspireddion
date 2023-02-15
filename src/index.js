@@ -31,7 +31,6 @@ const router = createBrowserRouter(
     </Route>
   )
 );
-console.log(router)
 
 root.render(
   <React.StrictMode>

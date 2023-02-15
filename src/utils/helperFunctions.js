@@ -32,16 +32,16 @@ export const getMediaContent = (post) => {
   switch (mediaType) {
     case "img":
       const resolutions = post.data.preview.images[0].resolutions;
-      mediaContent["src"] = cleanUrl(
-        resolutions[resolutions.length -1].url
-      );
-      mediaContent["height"] =
-      resolutions[resolutions.length -1].height;
-      mediaContent["width"] = resolutions[resolutions.length -1].width;
+      mediaContent["src"] = cleanUrl(resolutions[resolutions.length - 1].url);
+      mediaContent["height"] = resolutions[resolutions.length - 1].height;
+      mediaContent["width"] = resolutions[resolutions.length - 1].width;
       return mediaContent;
     case "gallery":
-      mediaContent["gallery_info"] = Object.entries(post.data.media_metadata).map((id) => {
-        const resolutions = id[1].p;
+      const correctOrder = Object.entries(post.data.gallery_data.items).map(
+        (item) => item[1].media_id
+      );
+      mediaContent["gallery_data"] = correctOrder.map((media_id) => {
+        const resolutions = post.data.media_metadata[media_id].p
         return {
           src: cleanUrl(resolutions[resolutions.length - 1].u),
           width: resolutions[resolutions.length - 1].x,
@@ -55,7 +55,7 @@ export const getMediaContent = (post) => {
       mediaContent["src"] = post.data.secure_media.reddit_video.fallback_url;
       return mediaContent;
     case "text":
-      if(post.data.selftext) {
+      if (post.data.selftext) {
         mediaContent["selftext"] = post.data.selftext;
       }
       return mediaContent;

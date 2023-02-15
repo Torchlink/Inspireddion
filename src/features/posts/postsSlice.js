@@ -1,39 +1,6 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { loadComments } from "../comments/commentsSlice";
+import {  createSlice } from "@reduxjs/toolkit";
+import { loadPosts, loadCurrentPost } from "./postSliceThunks";
 
-export const loadPosts = createAsyncThunk(
-  "posts/loadSubreddit",
-  async (extension) => {
-    try {
-      const response = await fetch(`https://www.reddit.com/${extension}`);
-      if (response.ok) {
-        const json = await response.json();
-        return json;
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
-);
-
-export const loadCurrentPost = createAsyncThunk(
-  "posts/loadCurrentPost",
-  async ({subredditName, postId}, thunkAPI) => {
-    try {
-
-      const response = await fetch(
-        `https://www.reddit.com/r/${subredditName}/comments/${postId}/.json`
-      );
-      if (response.ok) {
-        const json = await response.json();
-        thunkAPI.dispatch(loadComments(json[1]))
-        return json;
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
-);
 
 const postsSlice = createSlice({
   name: "posts",
@@ -44,16 +11,26 @@ const postsSlice = createSlice({
       },
     },
     currentPost: {
-      data : {
-        children: undefined
-      }
+      data: {
+        children: undefined,
+      },
     },
+    beforeArray: [],
     isLoadingPosts: false,
     failedLoadingPosts: false,
     isLoadingCurrentPost: false,
     failedLoadingCurrentPost: false,
   },
-  reducers: {},
+  reducers: {
+    popBeforeArray: (state, action) => {
+      if (state.beforeArray.length > 0) {
+        state.beforeArray.pop();
+      }
+    },
+    resetBeforeArray: (state, action) => {
+      state.beforeArray = []
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadPosts.pending, (state, action) => {
@@ -64,6 +41,9 @@ const postsSlice = createSlice({
         state.isLoadingPosts = false;
         state.failedLoadingPosts = false;
         state.posts = action.payload.data;
+        if(action.payload.data.before) {
+          state.beforeArray.push(action.payload.data.before)
+        }
       })
       .addCase(loadPosts.rejected, (state, action) => {
         state.isLoadingPosts = false;
@@ -89,4 +69,5 @@ const postsSlice = createSlice({
 export const selectPosts = (state) => state.posts.posts;
 export const selectCurrentPost = (state) => state.posts.currentPost;
 
+export const { popBeforeArray, resetBeforeArray } = postsSlice.actions;
 export default postsSlice.reducer;

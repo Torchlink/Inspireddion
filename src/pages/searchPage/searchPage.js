@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { Posts } from "../../components/posts/posts";
 import { selectAllOptions } from "../../features/options/optionsSlice";
-import { loadPosts, selectPosts } from "../../features/posts/postsSlice";
+import { selectPosts } from "../../features/posts/postsSlice";
+import { loadPosts } from "../../features/posts/postSliceThunks";
 import { selectCurrentSubreddit } from "../../features/subreddits/subredditsSlice";
 
 export function SearchPage() {
@@ -20,11 +21,11 @@ export function SearchPage() {
     const searchQuery = queryParams.get("q");
     if (currentSubreddit && subredditSearch) {
       dispatch(
-        loadPosts(`r/${currentSubreddit}search/?q=$${searchQuery}&restrict_sr=on`)
+        loadPosts({extension:`r/${currentSubreddit}search/?q=$${searchQuery}&restrict_sr=on`})
       );
     } else {
       dispatch(
-        loadPosts(`search/.json?q=${searchQuery}`)
+        loadPosts({extension:`search/.json?q=${searchQuery}`})
       );
     }
   }, [queryParams, search, currentSubreddit, subredditSearch, dispatch]);
