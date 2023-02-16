@@ -23,6 +23,7 @@ export const GalleryDisplay = ({ mediaContent }) => {
           src={mediaContent.gallery_data[slideIndex].src}
           width={mediaContent.gallery_data[slideIndex].width}
           height={mediaContent.gallery_data[slideIndex].height}
+          alt="Gallery img"
         />
       )}
       <button className="slideButton next" onClick={nextSlide}></button>

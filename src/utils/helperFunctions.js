@@ -41,7 +41,7 @@ export const getMediaContent = (post) => {
         (item) => item[1].media_id
       );
       mediaContent["gallery_data"] = correctOrder.map((media_id) => {
-        const resolutions = post.data.media_metadata[media_id].p
+        const resolutions = post.data.media_metadata[media_id].p;
         return {
           src: cleanUrl(resolutions[resolutions.length - 1].u),
           width: resolutions[resolutions.length - 1].x,
