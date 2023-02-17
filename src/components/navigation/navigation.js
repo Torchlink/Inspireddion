@@ -20,6 +20,7 @@ export const Navigation = () => {
       <SearchBar />
 
       <button
+      aria-label="Expand sidebar"
         className={
           options.sidebarOpen
             ? "toggleSidebarButton open"

@@ -23,7 +23,7 @@ export const SearchBar = () => {
         <button type="submit" className="searchButton">
           🔎
         </button>
-        <input type="text" className="search" onChange={({target}) => setSearchQuery(target.value)} />
+        <input type="text" className="search" placeholder="Search Reddit" onChange={({target}) => setSearchQuery(target.value)} />
       </form>
     </div>
   );
