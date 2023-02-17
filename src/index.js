@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
-import { store } from "./app/store";
+import { setupStore } from "./app/store";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
@@ -18,6 +18,7 @@ import { AboutPage } from "./pages/about/about";
 import { PostPage } from "./pages/postPage/postPage";
 import { SearchPage } from "./pages/searchPage/searchPage";
 
+const store = setupStore();
 const container = document.getElementById("root");
 const root = createRoot(container);
 const router = createBrowserRouter(

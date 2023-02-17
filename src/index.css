@@ -158,6 +158,11 @@ a {
   display: block;
 }
 
+.postPageContainer .postVideoContainer video {
+  box-shadow: 4px 4px 6px #000000c2;
+border-radius: 8px;
+}
+
 .postGalleryContainer {
   position: relative;
   overflow: hidden;
@@ -260,12 +265,13 @@ a {
   border-radius: 50%;
   font-size: 35px;
   font-weight: 900;
-  background-color: rgba(0, 0, 0, 0.76);
+  background-color: rgba(0, 0, 0, 0.48);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 0 3px 2px;
   cursor: pointer;
+  filter: drop-shadow(0px 0px 4px #111111e6);
 }
 
 .pageNavButton:hover {

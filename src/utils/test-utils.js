@@ -1,14 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { setupStore } from "../app/store";
-import commentsSliceReducer from "../features/comments/commentsSlice";
-import optionsSliceReducer from "../features/options/optionsSlice";
-import postsSliceReducer from "../features/posts/postsSlice";
-import subredditsSliceReducer from "../features/subreddits/subredditsSlice";
-
-export const store = configureStore({
-  reducer: {},
-});
 
 export function renderwithProviders(
   ui,

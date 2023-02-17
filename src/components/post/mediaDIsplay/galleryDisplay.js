@@ -17,16 +17,17 @@ export const GalleryDisplay = ({ mediaContent }) => {
 
   return (
     <div className="postGalleryContainer">
-      <button className="slideButton prev" onClick={prevSlide}></button>
+      <button className="slideButton prev" data-testid="galleryDisplayPrevButton" onClick={prevSlide}></button>
       {mediaContent.gallery_data && (
         <img
           src={mediaContent.gallery_data[slideIndex].src}
           width={mediaContent.gallery_data[slideIndex].width}
           height={mediaContent.gallery_data[slideIndex].height}
+          data-testid = {mediaContent.gallery_data[slideIndex].id}
           alt="Gallery img"
         />
       )}
-      <button className="slideButton next" onClick={nextSlide}></button>
+      <button className="slideButton next" data-testid="galleryDisplayNextButton" onClick={nextSlide}></button>
     </div>
   );
 };
