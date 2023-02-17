@@ -1,46 +1,17 @@
-# Getting Started with Create React App and Redux
+# Inspireddion
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+## English
 
-## Available Scripts
+### A portfolio project by Marcus Strauch
 
-In the project directory, you can run:
+In the scope of the Full-Stack Enginneer career path on codecademy.com i was prompted to write a Reddit app using React, Redux, and the Reddit JOSN API.
+This is the resulting project, which i honestly had a lot of fun with, and which taught me a lot of lessons. Not only abut the material covered in the codecademy course, but also about quite a few problems i ran into that required solutions not covered by codecademy. 
 
-### `npm start`
+For instance, this project uses react-showdown to convert the markdown returned by the Reddit API to html. I also utilize React Testing Library instead of Enzyme for React and Redux unit and integration testing, since Enzyme seems to currently(February 2023) lag behind in development. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## German
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Ein portfolio Projekt von Marcus Strauch
 
-### `npm test`
+Im Rahmen des Full-Stack Engineer Karriere-Pfads auf codecademy.com wurde mir die Herausforderung gestellt, eine Reddit-app mit React, Redux und der Reddit JSON API zu entwickeln. Dies ist das Ergebnis dieser Aufgabe, mit welcher ich ehrlich gesagt viel Spaß hatte. Im Laufe der Entwicklung habe ich vieles dazugelernt, nicht nur über das Material welches im Ausmaß des codecademy-Kurses enthalten ist. Durch die Stolpersteine, welche bei einem Projekt mit so viel Freiheit und so wenig Vorgaben unweigerlich auftauchen, musste ich mir natürlich noch einiges selber beibrigen und Lösungen auf eigene Fast finden.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

@@ -46,6 +46,7 @@ export const getMediaContent = (post) => {
           src: cleanUrl(resolutions[resolutions.length - 1].u),
           width: resolutions[resolutions.length - 1].x,
           height: resolutions[resolutions.length - 1].y,
+          id: media_id,
         };
       });
       return mediaContent;
