@@ -11,7 +11,7 @@ For instance, this project uses react-showdown to convert the markdown returned 
 
 ## German
 
-## Ein portfolio Projekt von Marcus Strauch
+### Ein portfolio Projekt von Marcus Strauch
 
 Im Rahmen des Full-Stack Engineer Karriere-Pfads auf codecademy.com wurde mir die Herausforderung gestellt, eine Reddit-app mit React, Redux und der Reddit JSON API zu entwickeln. Dies ist das Ergebnis dieser Aufgabe, mit welcher ich ehrlich gesagt viel Spaß hatte. Im Laufe der Entwicklung habe ich vieles dazugelernt, nicht nur über das Material welches im Ausmaß des codecademy-Kurses enthalten ist. Durch die Stolpersteine, welche bei einem Projekt mit so viel Freiheit und so wenig Vorgaben unweigerlich auftauchen, musste ich mir natürlich noch einiges selber beibrigen und Lösungen auf eigene Fast finden.
 
