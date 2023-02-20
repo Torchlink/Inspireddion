@@ -21,7 +21,7 @@ export function SearchPage() {
     const searchQuery = queryParams.get("q");
     if (currentSubreddit && subredditSearch) {
       dispatch(
-        loadPosts({extension:`r/${currentSubreddit}search/?q=$${searchQuery}&restrict_sr=on`})
+        loadPosts({extension:`r/${currentSubreddit}/search/.json?q=${searchQuery}&restrict_sr=on`})
       );
     } else {
       dispatch(

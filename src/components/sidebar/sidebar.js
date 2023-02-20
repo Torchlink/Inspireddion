@@ -1,8 +1,12 @@
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectAllOptions } from "../../features/options/optionsSlice";
+import {
+  selectAllOptions,
+  toggleSearchMode,
+} from "../../features/options/optionsSlice";
 import {
   filterSubreddits,
+  selectCurrentSubreddit,
   selectFilteredSubreddits,
   selectSubreddits,
 } from "../../features/subreddits/subredditsSlice";
@@ -17,9 +21,20 @@ export const Sidebar = () => {
   const dispatch = useDispatch();
 
   const subreddits = filteredSubreddits ? filteredSubreddits : loadedSubreddits;
+  const currentSubreddit = useSelector(selectCurrentSubreddit);
 
   return (
     <div className={options.sidebarOpen ? "sidebar open" : "sidebar"}>
+      {currentSubreddit && (
+        <button
+          onClick={() => dispatch(toggleSearchMode())}
+          className={
+            options.subredditSearch
+              ? "searchModeButton active"
+              : "searchModeButton"
+          }
+        >{`Limit search to /r/${currentSubreddit}`}</button>
+      )}
       <input
         className="sidebarInput"
         type="text"

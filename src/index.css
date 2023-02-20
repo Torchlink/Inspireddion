@@ -153,16 +153,24 @@ a {
   max-height: 1600px;
 }
 
+.postVideoContainer {
+  background: #1c1b1b;
+  border-radius: 0 0 20px 20px;
+}
+
 .postVideoContainer video {
   height: 100%;
   max-width: 100%;
   margin: 0 auto;
   display: block;
+  max-height: 75vh;
+  min-width: 30vw;
 }
 
 .postPageContainer .postVideoContainer video {
   box-shadow: 4px 4px 6px #000000c2;
   border-radius: 8px;
+  max-height: 75vh;
 }
 
 .postGalleryContainer {
@@ -431,6 +439,28 @@ a {
 
 .buttonLink:hover {
   background: var(--accentColorLight);
+}
+
+.searchModeButton {
+  color: rgb(0, 0, 0);
+  background: white;
+  padding: 5px 5px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  box-shadow: 2px 4px 0px rgb(80, 80, 80);
+  transition: all 100ms ease-in-out;
+  font-weight: 700;
+  margin: 10px;
+  display: block;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: none;
+}
+
+.searchModeButton.active {
+  filter: drop-shadow(0px 0px 2px var(--accentColorLight));
+  box-shadow: 2px 4px 0px var(--accentColorLight);
+  color: var(--accentColor);
 }
 
 .toggleSidebarButton {
