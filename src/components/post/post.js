@@ -9,11 +9,20 @@ export const Post = ({ post, mediaContent }) => {
     <div className="post">
       <Link to={`/r/${post.data.subreddit}/comments/${post.data.id}`}>
         <div className="postInfoContainer">
-          <span className="postTitle">{post.data.title}</span>
-          <span className="postComments">
-            Comments: {post.data.num_comments}
-          </span>
-          <span className="postAuthor">posted by /u/{post.data.author}</span>
+          <div className="voteCount">
+            <span className="upvote">&#8249;</span>
+            {post.data.ups}
+            <span className="downvote">&#8250;</span>
+          </div>
+          <div className="metaInfoContainer">
+            <span className="postTitle">{post.data.title}</span>
+            <span className="postComments">
+              Comments: {post.data.num_comments}
+            </span>
+            <span className="postAuthor">
+              posted by /u/{post.data.author} in /r/{post.data.subreddit}
+            </span>
+          </div>
         </div>
       </Link>
       {mediaContent.type === "gallery" && (
