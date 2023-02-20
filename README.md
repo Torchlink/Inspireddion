@@ -7,7 +7,13 @@
 In the scope of the Full-Stack Enginneer career path on codecademy.com i was prompted to write a Reddit app using React, Redux, and the Reddit JOSN API.
 This is the resulting project, which i honestly had a lot of fun with, and which taught me a lot of lessons. Not only abut the material covered in the codecademy course, but also about quite a few problems i ran into that required solutions not covered by codecademy. 
 
-#### Technologies used:
+### Wireframes
+
+![Desktop Wireframe](./wireframe_window.webp)
+
+![Mobile Wireframe](./wireframe_mobile.webp)
+
+### Technologies used:
 
 + React
 + Redux
@@ -69,7 +75,7 @@ Im Rahmen des Full-Stack Engineer Karriere-Pfads auf codecademy.com wurde mir di
 + Animierte Seitenübergänge
 + Platzhalter werden angezeigt während Inhalte laden
 
-### Future work
+### Zukünftige Verbesserungen
 
 + Anzeige von Antoworten und Kommentar-Threads
 + Mehr als 100 subreddits in der Seitenleiste anzeigen
