@@ -101,6 +101,17 @@ a {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.postPageContainer .authorInfo {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  display: block;
+}
+
+.postPageContainer .postImgContainer img {
+  box-shadow: 2px 2px 6px rgba(95, 95, 95, 0.712);
+  border-radius: 8px;
+}
+
 .pageContainer {
   width: 80%;
   margin: 0 auto;
@@ -342,7 +353,21 @@ a {
 
 .commentsContainer ul > li {
   padding: 15px 0 15px 0;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.267);
+}
+
+.commentText {
+  border-left: 3px solid rgba(128, 128, 128, 0.514) ;
+  padding: 1px 2px 1px 6px;
+  margin: 4px 0px 0px 5px;
+}
+
+.commentText p {
+  margin: 5px 0px;
+}
+
+.commentInfo {
+  font-weight: 700;
 }
 
 .sidebarInput {

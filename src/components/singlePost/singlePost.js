@@ -8,6 +8,7 @@ export function SinglePost({mediaContent, post, comments}) {
   return (
     <div className="postPageContainer">
       <h1>{post.data.children[0].data.title}</h1>
+      <span className="authorInfo">Posted by /u/{post.data.children[0].data.author}</span>
       {mediaContent.type === "gallery" && (
         <GalleryDisplay mediaContent={mediaContent} />
       )}
